@@ -2,6 +2,14 @@
 
 ## Install
 
+It is advised to install this in a separate enviroment. To do this with conda use the following command:
+
+```bash
+conda create -n pymusas_model python=3.10 ghapi
+```
+
+
+
 Can be installed on all operating systems and supports Python version >= 3.7, to install run:
 
 ``` bash
@@ -13,6 +21,7 @@ For a `zsh` shell, which is the default shell for the new Macs you will need to 
 ``` bash
 pip install -e .\[tests\]
 ```
+
 
 ### Running linters
 
@@ -39,6 +48,31 @@ mypy
 
 The testing structure of `/model_function_tests` has been heavily influenced by how [spaCy tests their models](https://github.com/explosion/spacy-models/tree/master/tests#writing-tests).
 
+## Updating Language Resources
+
+The models generated from `pymusas_models` rely on external language data. This information is stored in the `language_resources` file.  The file contains links to the language resouces, based on the github commit ID.  This needs to be updated (see [Language Resource Meta Data section]\
+(#language-resource-meta-data) for how this file is structured) for the CLI tool to be able to build models based on the new language data.
+
+To update or add a new model, the following steps need to be completed. From your fork of the repository:
+
+1. Update the `language_resources.json` to reflect the new data.
+2. Follow the steps in "Model deployment lifecycle" to create the new models, and test them locally.
+3. Follow the steps to "Releasing the models to GitHub".
+4. Follow the steps to "Creating the overview of the models table"
+5. (Skip this step to see if it is needed) Enable GitHub Actions on your fork.
+6. Create Pull Request to push changes into main repository
+
+
+### Testing locally
+
+Once you have built the model packages, you will want to test them, especially if you are adding a new language.  You can follow the [text tagging example](https://ucrel.github.io/pymusas/usage/how_to/tag_text).  In the first step where you install the language package, you will need to replace this with your local build of the package: For the english single lexicon, assuming that the `pymusas-models` directory is in `/home/user/Public/`
+
+```bash
+pip install /home/user/Public/models/en_single_none_contextual-0.3.0/dist/en_single_none_contextual-0.3.0-py3-none-any.whl
+python -m spacy download en_core_web_sm
+```
+
+###
 
 ## Model deployment lifecycle
 
