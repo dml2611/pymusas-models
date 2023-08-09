@@ -19,26 +19,6 @@
             "script": "Hani"
         }
     },
-    "dk" : {
-        "resources":[
-            {
-                "data type": "single", 
-                "url": "https://raw.githubusercontent.com/UCREL/Multilingual-USAS/master/Danish/semantic_lexicon_dk.tsv"
-            },
-            {
-                "data type": "mwe",
-                "url": "https://raw.githubusercontent.com/UCREL/Multilingual-USAS/master/Danish/mwe-dk.tsv"
-            }
-        ],
-        "model information": {
-            "POS mapper": "UPOS"
-        },
-        "language data":{
-            "description": "Danish",
-            "macrolanguage": "dk",
-            "script": "Latn"
-        }
-    },
     "nl" : {
         "resources":[
             {
